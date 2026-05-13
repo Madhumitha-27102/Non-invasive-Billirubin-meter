@@ -1,0 +1,60 @@
+import serial
+import time
+import pickle
+import numpy as np
+
+# Load trained models, scalers, and encoders
+with open("jaundice_models.pkl", "rb") as f:
+    model_data = pickle.load(f)
+
+def predict_jaundice(r, g, b, pd_voltage, mode):
+    # Select model/scaler/encoder
+    model = model_data['neonate_model'] if mode == 1 else model_data['adult_model']
+    scaler = model_data['neonate_scaler'] if mode == 1 else model_data['adult_scaler']
+    encoder = model_data['neonate_encoder'] if mode == 1 else model_data['adult_encoder']
+
+    # Normalize RGB (0-1)
+    r_norm = r / 65535.0
+    g_norm = g / 65535.0 
+    b_norm = b / 65535.0
+
+    # Combine RGB + PD voltage as features
+    features = np.array([[r_norm, g_norm, b_norm, pd_voltage]])
+
+    # Scale features
+    features_scaled = scaler.transform(features)
+
+    # Predict
+    pred_class = model.predict(features_scaled)
+    pred_label = encoder.inverse_transform(pred_class)[0]
+    return pred_label
+
+# Open serial port
+ser = serial.Serial('COM4', 9600, timeout=1)
+time.sleep(2)  # Allow ESP32 to reset
+
+print("Reading data from ESP32... Press Ctrl+C to stop.")
+
+try:
+    while True:
+        line = ser.readline().decode('utf-8').strip()
+        if line:
+            try:
+                r_str, g_str, b_str, mode_str, pd_str = line.split(',')
+                r = int(r_str)
+                g = int(g_str)
+                b = int(b_str)
+                mode = int(mode_str)
+                pd_voltage = float(pd_str)
+
+                prediction = predict_jaundice(r, g, b, pd_voltage, mode)
+                mode_name = "Neonate" if mode == 1 else "Adult"   
+                print(f"Mode: {mode_name} | RGB: {r},{g},{b} | PD: {pd_voltage:.2f} V | Predicted Jaundice: {prediction}")
+
+            except ValueError:
+                print("-", line)
+
+except KeyboardInterrupt:
+    print("Stopped by user.")
+finally:
+    ser.close()
