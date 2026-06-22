@@ -1,26 +1,20 @@
-\# Smart Bilirubin Detector
+Smart Bilirubin Detector
 
 
 
-\## 🚀 Project Overview
+Project Overview
 
-The \*\*Smart Bilirubin Detector\*\* is a portable, non‑invasive system designed to measure bilirubin levels and classify jaundice severity for both neonates and adults. By combining RGB color sensing with photodiode measurements, this device estimates bilirubin concentration and displays real‑time results. A complementary Python ML script processes serial data to provide refined predictive outputs.
+The Smart Bilirubin Detector is a portable, non‑invasive system designed to measure bilirubin levels and classify jaundice severity for both neonates and adults. By combining RGB color sensing with photodiode measurements, this device estimates bilirubin concentration and displays real‑time results. A complementary Python ML script processes serial data to provide refined predictive outputs.
 
 
 
 This system aims to offer a low‑cost, accessible screening tool for early jaundice detection.
 
-
-
----
-
-
-
-\## 🧠 Technology Stack
+ Technology Stack
 
 
 
-\### \*\*Hardware\*\*
+Hardware
 
 \- \*\*ESP32 microcontroller\*\*
 
@@ -36,7 +30,7 @@ This system aims to offer a low‑cost, accessible screening tool for early jaun
 
 
 
-\### \*\*Software\*\*
+Software
 
 \- \*\*PlatformIO / Arduino (C++)\*\* for embedded firmware
 
@@ -46,7 +40,7 @@ This system aims to offer a low‑cost, accessible screening tool for early jaun
 
 
 
-\### \*\*Libraries Used\*\*
+Libraries Used
 
 \- `Adafruit\_TCS34725`
 
@@ -63,13 +57,7 @@ This system aims to offer a low‑cost, accessible screening tool for early jaun
 \- `scikit‑learn`
 
 
-
----
-
-
-
-\## 📁 Folder Structure
-
+Folder Structure
 
 
 Smart-Bilirubin-Detector/
@@ -91,16 +79,9 @@ Smart-Bilirubin-Detector/
 └── README.md ← Project documentation
 
 
+ How It Works
 
----
-
-
-
-\## 📌 How It Works
-
-
-
-\### 1️⃣ ESP32 Firmware
+ ESP32 Firmware
 
 The ESP32 reads data from the RGB sensor and photodiode, normalizes values, and computes an approximate bilirubin level. It also displays results on the OLED and prints data over serial for further processing.
 
@@ -150,9 +131,7 @@ The `pythonpredictor.py` script:
 
 ---
 
-
-
-\## ▶️ Demo Video
+Demo Video
 
 
 
@@ -162,11 +141,7 @@ Watch the full working demo here:
 
 
 
----
-
-
-
-\## 🛠 How to Use
+ How to Use
 
 
 
@@ -186,29 +161,15 @@ Watch the full working demo here:
 
 ---
 
-
-
-\## 👤 Author
+ Author
 
 
 
 \*\*MED\_HACKERS\*\*  
 
-IEEE Mega Project Submission – Round 1
+WINNER OF DEEPSPRINT HACKATHON - CHENNAI INSTITUTE OF TECHNOLOGY
 
 
-
----
-
-
-
-\## 📄 License
-
-
-
-This project is submitted for the IEEE Mega Project competition.  
-
-Please refer to the competition guidelines for usage permissions.
 
 
 
