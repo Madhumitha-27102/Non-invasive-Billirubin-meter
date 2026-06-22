@@ -107,9 +107,6 @@ The ESP32 reads data from the RGB sensor and photodiode, normalizes values, and 
 
 
 
----
-
-
 Python Prediction Script
 
 
@@ -126,9 +123,6 @@ The `pythonpredictor.py` script:
 
 5\. Prints final prediction to console.
 
-
-
----
 
 Demo Video
 
@@ -166,6 +160,15 @@ Watch the full working demo here:
 \*\*MED\_HACKERS\*\*  
 
 WINNER OF DEEPSPRINT HACKATHON - CHENNAI INSTITUTE OF TECHNOLOGY
+
+OUTPUT IMAGES
+<img width="720" height="1280" alt="image" src="https://github.com/user-attachments/assets/e56dfd57-d0d5-40b4-99bc-c03571b7a1e2" />
+
+<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/22954ecf-d9d3-42cc-bb47-9f2c9951afbf" />
+
+<img width="1280" height="720" alt="image" src="https://github.com/user-attachments/assets/6349d448-ae33-43e5-b851-7cbae94dc09f" />
+
+
 
 
 
